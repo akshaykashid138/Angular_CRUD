@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../Partials/head.ejs %>
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myCtrl" ng-cloak="">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <% include ../Partials/sidebar.ejs %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Topbar -->
+            <% include ../Partials/topbar.ejs %>
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <div>
+                            <h3 class="text-info font-weight-bold">Application Form</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <div class=" no-gutters align-items-center" ng-init="initController()">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <% include ../Partials/footer.ejs %>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+<!-- Logout Modal-->
+<% include ../Partials/logout.ejs %>
+<!-- Bootstrap core JavaScript-->
+<% include ../Partials/bodyScriptLoader.ejs %>
+<script>
+    <% include ng-app.js %>
+</script>
+
+</body>
+
+</html>

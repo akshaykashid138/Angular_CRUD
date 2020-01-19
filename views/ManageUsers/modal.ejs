@@ -1,0 +1,122 @@
+<script type="text/ng-template" id="modal.html">
+    <div id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+        <div class="modal-header bg-info">
+            <h4 id="exampleModalLabel" ng-if="user.mode === 'add'" class="modal-title text-white">Add User</h4>
+            <h4 id="exampleModalLabel" ng-if="user.mode === 'edit'" class="modal-title text-white">Edit User</h4>
+            <button type="button" user-dismiss="modal" aria-label="Close" class="close text-light"
+                    ng-click="close()"><span
+                        aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body" ng-cloak>
+            <div class="px-3">
+                <form name="userForm">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible" role="alert"
+                             ng-repeat="message in errorMessages">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            {{message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>First Name</label>
+                            <input class="form-control" type="text" name="FirstName" ng-model="user.FirstName"
+                                   placeholder="First Name" ng-minlength="3" required>
+                            <div ng-messages="userForm.FirstName.$error" style="color:red"
+                                 ng-if="userForm.FirstName.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter User Name</div>
+                                <div ng-message="minlength">User Name is too short</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Last Name</label>
+                            <input class="form-control" type="text" name="LastName" ng-model="user.LastName"
+                                   placeholder="Last Name" ng-minlength="3" required>
+                            <div ng-messages="userForm.LastName.$error" style="color:red"
+                                 ng-if="userForm.LastName.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter User Name</div>
+                                <div ng-message="minlength">User Name is too short</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Email Address</label>
+                            <input class="form-control" type="email" name="EmailID" ng-model="user.EmailID"
+                                   placeholder="Email" ng-minlength="3" required>
+
+                            <div ng-messages="userForm.EmailID.$error" style="color:red"
+                                 ng-if="userForm.EmailID.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter EmailID</div>
+                                <div ng-message="email">Please Enter Valid EmailID</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Contact Number</label>
+                            <input class="form-control" type="text" name="ContactNumber"
+                                   ng-model="user.ContactNumber"
+                                   placeholder="Contact Number" ng-pattern="/^[6-9][0-9]{9}$/"
+                                   ng-minlength="3" required>
+
+                            <div ng-messages="userForm.ContactNumber.$error" style="color:red"
+                                 ng-if="userForm.ContactNumber.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter Contact Number</div>
+                                <div ng-message="pattern">Please Enter Valid Contact Number</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label>Address</label>
+                            <input class="form-control" type="text" name="Address"
+                                   ng-model="user.Address"
+                                   placeholder="Address"
+                                    required>
+
+                            <div ng-messages="userForm.Address.$error" style="color:red"
+                                 ng-if="userForm.Address.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter Address</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>UserType</label>
+                            <input class="form-control" type="number" name="UserTypeID" ng-model="user.UserTypeID"
+                                   placeholder="UserTypeID"  required>
+
+                            <div ng-messages="userForm.UserTypeID.$error" style="color:red"
+                                 ng-if="userForm.UserTypeID.$touched"
+                                 role="alert">
+                                <div ng-message="required">Please Enter UserTypeID</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-raised btn-primary" ng-if="user.mode=='add'"
+                ng-disabled="!userForm.$valid" ng-click="addNewUser()">
+            <i class="fa fa-save"></i> Add User
+        </button>
+        <button type="button" class="btn btn-raised btn-warning" ng-if="user.mode=='edit'"
+                ng-disabled="!userForm.$valid " ng-click="editUser()">
+            <i class="fa fa-edit"></i> Edit User
+        </button>
+        <button type="button" data-dismiss="modal" class="btn btn-raised btn-danger" ng-click="close()"><i
+                    class="fa fa-times"></i> Close
+        </button>
+    </div>
+</script>
+
+
